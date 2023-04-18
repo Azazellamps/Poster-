@@ -1,13 +1,18 @@
 public class Afisha {
 
-
+    private Afisha[] movies = new Afisha[0];
     private int limit;
 
 
+    public Afisha(){
+        limit = 10;
+    }
+
     public Afisha(int limit) {
+
         this.limit = limit;
     }
-    private Afisha[] movies = new Afisha[0];
+
     public void add(Afisha movie) {
         Afisha[] tmp = new Afisha[movies.length + 1];
         for (int i = 0; i < movies.length; i++) {
@@ -18,17 +23,7 @@ public class Afisha {
     }
 
     public Afisha[] findAll() {
-        int resultLength = movies.length;
-        if (resultLength >= limit) {
-            resultLength = limit;
-        } else {
-            resultLength = movies.length;
-        }
-        Afisha[] result = new Afisha[ resultLength];
-        for (int i = 0; i < resultLength; i++) {
-            result[i] = movies[i];
-        }
-        return result;
+        return movies;
     }
 
     public Afisha[] findLast() {
