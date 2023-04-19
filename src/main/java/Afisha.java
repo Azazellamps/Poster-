@@ -27,15 +27,15 @@ public class Afisha {
     }
 
     public Afisha[] findLast() {
-        int resultLength = movies.length;
-        if (resultLength >= limit) {
-            resultLength = limit;
-        } else {
+        int resultLength;
+        if (movies.length < limit) {
             resultLength = movies.length;
+        } else {
+            resultLength = limit;
         }
         Afisha[] result = new Afisha[resultLength];
         for (int i = 0; i < resultLength; i++) {
-            result[i] = movies[resultLength - 1 - i];
+            result[i] = movies[movies.length - 1 - i];
         }
         return result;
     }

@@ -48,7 +48,7 @@ public class AfishaTest {
         kino.add(movie6);
         kino.add(movie7);
 
-        Afisha[] expected = {movie1, movie2,movie3,movie4,movie5,movie6,movie7};
+        Afisha[] expected = {movie1, movie2, movie3, movie4, movie5, movie6, movie7};
         Afisha[] actual = kino.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -66,7 +66,7 @@ public class AfishaTest {
         kino.add(movie7);
 
 
-        Afisha[] expected = {movie7, movie6, movie5, movie4, movie3, movie2,movie1};
+        Afisha[] expected = {movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         Afisha[] actual = kino.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -87,11 +87,12 @@ public class AfishaTest {
         kino.add(movie10);
 
 
-        Afisha[] expected = {movie10, movie9, movie8, movie7, movie6,movie5, movie4, movie3, movie2,movie1};
+        Afisha[] expected = {movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
         Afisha[] actual = kino.findLast();
 
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void NOLimit() {
         Afisha kino = new Afisha();
@@ -99,11 +100,59 @@ public class AfishaTest {
         kino.add(movie2);
         kino.add(movie3);
 
-        Afisha[] expected = {movie1,movie2,movie3};
+        Afisha[] expected = {movie1, movie2, movie3};
         Afisha[] actual = kino.findAll();
 
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void recentMoviesMinLimit() {
+        Afisha kino = new Afisha(5);
+        kino.add(movie1);
+        kino.add(movie2);
+        kino.add(movie3);
+        kino.add(movie4);
+        kino.add(movie5);
+        kino.add(movie6);
+        kino.add(movie7);
+        kino.add(movie8);
+        kino.add(movie9);
+        kino.add(movie10);
+
+        Afisha[] expected = {movie10, movie9, movie8, movie7,movie6};
+        Afisha[] actual = kino.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void recentMoviesEquallyLimit() {
+        Afisha kino = new Afisha(5);
+        kino.add(movie1);
+        kino.add(movie2);
+        kino.add(movie3);
+        kino.add(movie4);
+        kino.add(movie5);
+
+
+        Afisha[] expected = {movie5, movie4, movie3, movie2, movie1};
+        Afisha[] actual = kino.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void recentMoviesMaxLimit() {
+        Afisha kino = new Afisha(6);
+        kino.add(movie1);
+        kino.add(movie2);
+        kino.add(movie3);
+        kino.add(movie4);
+        kino.add(movie5);
+
+
+        Afisha[] expected = {movie5, movie4, movie3, movie2, movie1};
+        Afisha[] actual = kino.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 }
